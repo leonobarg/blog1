@@ -1,0 +1,76 @@
+{% extends "index.html" %}
+
+{% block contenido %}
+<main id="main">
+
+    <!-- ======= Blog Header ======= -->
+    <div class="header-bg page-area">
+        <div class="container position-relative">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="slider-content text-center">
+                        <div class="header-bottom">
+                            <div class="layer2">
+                                <h1 class="title2">PANEL DE USUARIO</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Blog Header -->
+
+    <!-- ======= Blog Page ======= -->
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'crear_post' user.id %}" role="button">Agregar Post</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Tus Posts</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>N° Post</th>
+                    <th>Titulo</th>
+                    <th>Imagen</th>
+                    <th>Genero</th>
+                    <th>Plataforma</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for n in entity %}
+                <tr>
+                    <td>{{n.id}}</td>
+                    <td class="text-uppercase">{{n.titulo}}</td>
+                    <td>
+                        {% if n.imagen %}
+                        <img src="{{n.imagen.url}}" height="100" width="100">
+                        {% endif %}
+                    </td>
+                    <td class="text-uppercase">{{n.genero}}</td>
+                    <td class="text-uppercase">{{n.plataforma}}</td>
+                    <td>
+                        <a name="" id="" class="btn btn-info" href="{% url 'editar_post' n.id user.id %}"
+                            role="button">Editar</a>
+                        |
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_post' n.id user.id %}" role="button">Borrar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="card-footer text-muted">
+
+        </div>
+        <div class="blog-pagination">
+            {% include 'paginator.html' %}
+        </div>
+
+    </div>
+    <!-- End Blog Page -->
+
+</main><!-- End #main -->
+
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {% for campo in formulario %}
+    <div class="mb-3">
+        <label for="" class="form-label">{{campo.label}}:</label>
+        {% if campo.field.widget.input_type == 'file' and campo.value %}
+        <br>
+        <img src="{{MEDIA_URL}}/media/{{campo.value}}" width="100">
+        {% endif %}
+        <input 
+        type="{{campo.field.widget.input_type}}" 
+        class="form-control" 
+        name="{{campo.name}}" 
+        id="" 
+        placeholder="{{campo.label}}"
+        value="{{campo.value | default:''}}">
+    </div>
+    <div class="col-12 help-text">{{campo.errors}}</div>
+    {% endfor %}
+    <input name="" id="" class="btn btn-warning" type="submit" value="Guardar Post">
+    <a name="" id="" class="btn btn-dark" href="{% url 'tus_post' user.id %}" role="button" type="button">Cancelar</a>
+</form>

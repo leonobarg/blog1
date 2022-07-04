@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% block contenido %}
+<main id="main">
+
+  <!-- ======= Blog Header ======= -->
+  <div class="header-bg page-area">
+    <div class="container position-relative">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="slider-content text-center">
+            <div class="header-bottom">
+              <div class="layer2">
+                <h1 class="title2">PANEL USUARIO</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Blog Header -->
+
+  <!-- ======= Blog Page ======= -->
+<form enctype="multipart/form-data" method="post">
+  {% csrf_token %}
+<div class="card">
+  <div class="card-header">
+    Editar Post
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Datos del Post {{posteo.titulo}}</h4>
+    {% include 'posts/form_post.html'%}
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</form>  
+  </div>
+</div>
+{% endblock %} 

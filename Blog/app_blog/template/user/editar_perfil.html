@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+{% block contenido %}
+<main id="main">
+
+  <!-- ======= Blog Header ======= -->
+  <div class="header-bg page-area">
+    <div class="container position-relative">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="slider-content text-center">
+            <div class="header-bottom">
+              <div class="layer2">
+                <h1 class="title2">PANEL DE USUARIO</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Blog Header -->
+
+  <!-- ======= Blog Page ======= -->
+
+<br>
+    <div class=" offset-4 col-md-4 col-sm-4 col-xs-4">
+      <div class="card-header">
+        <h4>Editar Perfil de {{usuario}}</h4>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+              {{formulario.as_table}}
+            </table>
+            <br>
+            <input name="" id="" class="btn btn-warning" type="submit" value="Guardar">
+            <a name="" id="" class="btn btn-dark" href="{% url 'tus_post' user.id %}" role="button"
+              type="button">Cancelar</a>
+          </form>
+        </table>
+        <div class="card-footer text-muted">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+{% endblock %}

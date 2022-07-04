@@ -1,0 +1,107 @@
+{% extends "index.html" %}
+{% block contenido %}
+<main id="main">
+
+  <!-- ======= Blog Header ======= -->
+  <div class="header-bg page-area">
+    <div class="container position-relative">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="slider-content text-center">
+            <div class="header-bottom">
+              <div class="layer2">
+                <h1 class="title2">Blog de Streaming</h1>
+              </div>
+              <div class="layer3">
+                <h2 class="title3">Series y Peliculas</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Blog Header -->
+
+  <!-- ======= Blog Page ======= -->
+  <div class="blog-page area-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+          <div class="page-head-blog">
+            <div class="single-blog-page">
+              <!-- search option start -->
+              <a class="post-information">Buscar por Nombre o Plataforma</a>
+              <form action="buscar_post" method="GET">
+                <div class="search-option">
+                  <input type="text" placeholder="Buscar..." name="buscar">
+                  <button class="button" type="submit">
+                    <i class="bi bi-search"></i>
+                  </button>
+                </div>
+              </form>
+              <!-- search option end -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-2 col-sm-2 col-xs-2">
+
+          </div>
+
+
+      <!-- End left sidebar -->
+      <!-- Start single blog -->
+
+
+          
+          <div class="col-md-10 col-sm-10 col-xs-10">
+            {% for n in entity %}
+            <div class="single-blog">
+              <div class="single-blog-img">
+                <a href="blog-details.html">
+                  <img src="{{n.imagen.url}}" width="100%" alt="">
+                </a>
+              </div>
+              <div class="blog-meta">
+                <span class="comments-type">
+                  <i class="bi bi-person"></i>
+                  <a class="text-uppercase">{{n.autor}}</a>
+                </span>
+                <span class="date-type">
+                  <i class="bi bi-calendar"></i>{{n.fcreacion}}
+                </span>
+                <span class="tag-meta">
+                  <i class="bi bi-folder"></i>
+                  <a class="text-uppercase">{{n.plataforma}}</a>
+                </span>
+              </div>
+              <div class="blog-text ">
+                <h4>
+                  <a href="{% url 'ver' n.id %}" class="text-uppercase">{{n.titulo}}</a>
+                </h4>
+                <p>
+                  {{n.cuerpo}}
+                </p>
+              </div>
+              <span>
+                <a href="{% url 'ver' n.id %}" class="ready-btn">Leer más</a>
+              </span>
+            </div>
+            {% endfor %}
+          </div>
+          
+          <!-- End single blog -->
+        </div>
+        <div class="row">
+          <div class="blog-pagination">
+            {% include 'paginator.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Blog Page -->
+
+</main><!-- End #main -->
+{% endblock %}
+<!-- ======= Footer ======= -->

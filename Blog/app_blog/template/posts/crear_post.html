@@ -1,0 +1,114 @@
+{% extends "index.html" %}
+{% block contenido %}
+<main id="main">
+
+  <!-- ======= Blog Header ======= -->
+  <div class="header-bg page-area">
+    <div class="container position-relative">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="slider-content text-center">
+            <div class="header-bottom">
+              <div class="layer2">
+                <h1 class="title2">PANEL USUARIO</h1>
+              </div>
+              <div class="layer3">
+                <h2 class="title3">Profesional Blog Page</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Blog Header -->
+
+  <!-- ======= Blog Page ======= -->
+  <form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Nuevo Post </h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="form-group col-lg-6">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text fw-bold" id="inputGroup-sizing-sm">Titulo</span>
+              <input type="text" class="form-control text-uppercase" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" name="titulo" required>
+            </div>
+          </div>
+          <div class="form-group col-lg-6">
+            <div class="input-group input-group-sm mb-1 ">
+              <span class="input-group-text fw-bold" id="inputGroup-sizing-sm">Imagen</span>
+              <input type="file" class="form-control " aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" name="imagen">
+            </div>
+          </div>
+          <div class="form-group col-lg-4">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text fw-bold" id="inputGroup-sizing-sm">N° de Temporadas</span>
+              <input type="text" class="form-control text-uppercase" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" name="temporadas" required>
+            </div>
+          </div>
+          <div class="form-group col-lg-3">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text fw-bold" id="inputGroup-sizing-sm">Genero</span>
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="genero">
+                <option selected>Seleccione Genero</option>
+                <option value="Terror">Terror</option>
+                <option value="Suspenso">Suspenso</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Accion">Accion</option>
+                <option value="Drama">Drama</option>
+                <option value="Infantil">Infantil</option>
+                <option value="Musical">Musical</option>
+                <option value="Ficcion">Ficcion</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-lg-5">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text fw-bold" id="inputGroup-sizing-sm">Plataforma de Streaming</span>
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="plataforma">
+                <option selected>Seleccione Plataforma</option>
+                <option value="Netflix">Netflix</option>
+                <option value="Disney+">Disney+</option>
+                <option value="Star+">Star+</option>
+                <option value="HBO Max">HBO Max</option>
+                <option value="Amazon">Amazon</option>
+                <option value="Paramount+">Paramount+</option>
+                <option value="Flow">Flow</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-lg-6">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text fw-bold" id="inputGroup-sizing-sm">Enlace</span>
+              <input type="textarea" class="form-control text" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" name="enlace">
+            </div>
+          </div>
+          <div class="form-group col-lg-12">
+            <div class="input-group">
+              <span class="input-group-text fw-bold">Detalle del Post</span>
+              <textarea class="form-control" aria-label="With textarea" rows="5" name="cuerpo"></textarea>
+            </div>
+          </div>
+          <p>
+          <div class="form-group col-lg-1">
+            <div class="input-group input-group-sm mb-3">
+              <input type="submit" class="btn btn-danger" value="Guardar">
+            </div>
+          </div>
+          <div class="form-group col-lg-6">
+            <div class="input-group input-group-sm mb-3">
+              <a name="" id="" class="btn btn-dark" href="{% url 'tus_post' user.id %}" role="button"
+                type="button">Cancelar</a>
+            </div>
+          </div>
+        </div>
+  </form>
+</main>
+{% endblock %}

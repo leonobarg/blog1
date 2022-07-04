@@ -1,0 +1,136 @@
+{% extends "index.html" %}
+{% block contenido %}
+<main id="main">
+
+  <!-- ======= Blog Header ======= -->
+  <div class="header-bg page-area" style="background-image: url({{post.imagen.url}})">
+    <div class="container position-relative">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="slider-content text-center">
+            <div class="header-bottom">
+              <div class="layer2">
+                <h1 class="title2">{{post.titulo}} </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Blog Header -->
+
+  <!-- ======= Blog Page ======= -->
+  <div class="blog-page area-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4">
+          <div class="page-head-blog">
+            <img src="{{post.imagen.url}}" width="100%" />
+          </div>
+          <br>
+
+        </div>
+        <!-- End left sidebar -->
+        <!-- Start single blog -->
+        <div class="col-md-8 col-sm-8 col-xs-8">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <!-- single-blog start -->
+              <article class="blog-post-wrapper">
+                <div class="post-thumbnail">
+                  <img src="assets/img/blog/6.jpg" alt="" />
+                </div>
+                <div class="post-information">
+                  <h2>{{post.titulo}}</h2>
+                  <div class="entry-meta">
+                    <span class="author-meta"><i class="bi bi-person"></i> <a href="#">{{post.autor}}</a></span>
+                    <span><i class="bi bi-clock"></i> {{post.fcreacion}}</span>
+                    <span><i class="bi bi-chat"></i> <a href="#">{{cantidad}} comentarios</a></span>
+                  </div>
+                  <div class="entry-content">
+                    <p>Aliquam et metus pharetra, bibendum massa nec, fermentum odio. Nunc id leo ultrices, mollis
+                      ligula in, finibus tortor. Mauris eu dui ut lectus fermentum eleifend. Pellentesque faucibus sem
+                      ante, non malesuada odio varius nec. Suspendisse
+                      potenti. Proin consectetur aliquam odio nec fringilla. Sed interdum at justo in efficitur. Vivamus
+                      gravida volutpat sodales. Fusce ornare sit amet ligula condimentum sagittis.</p>
+                    <blockquote>
+                      <p style="color:#FF0000">{{post.cuerpo}} </p>
+                    </blockquote>
+                    <p>Aenean et tempor eros, vitae sollicitudin velit. Etiam varius enim nec quam tempor, sed efficitur
+                      ex ultrices. Phasellus pretium est vel dui vestibulum condimentum. Aenean nec suscipit nibh.
+                      Phasellus nec lacus id arcu facilisis elementum.
+                      Curabitur lobortis, elit ut elementum congue, erat ex bibendum odio, nec iaculis lacus sem non
+                      lorem. Duis suscipit metus ante, sed convallis quam posuere quis. Ut tincidunt eleifend odio, ac
+                      fringilla mi vehicula nec. Nunc vitae
+                      lacus eget lectus imperdiet tempus sed in dui. Nam molestie magna at risus consectetur, placerat
+                      suscipit justo dignissim. Sed vitae fringilla enim, nec ullamcorper arcu.</p>
+                      <blockquote>
+                        <i class="bi bi-tags"></i>
+                        <a class="text-uppercase" href="{{post.enlace}}" target="_blank">Enlace a {{post.titulo}}</a>
+                      </blockquote>
+                  </div>
+                </div>
+              </article>
+              <div class="clear"></div>
+              <div class="single-post-comments">
+                <div class="comments-area">
+                  <div class="comments-heading">
+                    <h3> {{cantidad}} Comentarios</h3>
+                  </div>
+                  {% if cantidad == 0 %}
+                  <div class="comments-list">
+                    <ul>
+                      <li class="threaded-comments">
+                        <div class="comments-details">
+                          <span class="post-time"> Sin comentarios aun </span>
+                          {% else %}
+                          {% for n in comentarios %}
+                          <div class="post-time">
+                            <span>
+                              <b>{{n.nombre}}</b>
+                              //
+                              <span class="post-time">{{n.fcomentario}}</span>
+                            </span>
+                            <p>{{ n.coment}}</p>
+                          </div>
+                        </div>
+                      </li>
+                      {% endfor %}
+                      {% endif %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="comment-respond">
+                  <h3 class="comment-reply-title">Deja tu comentario </h3>
+                  <span class="email-notes">Tu dirección de correo electrónico no será publicada. Los campos
+                    obligatorios están marcados *</span>
+                  <form method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6">
+                        <p>Tu nombre *</p>
+                        <input type="text" name="nombre" />
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <p>Tu email *</p>
+                        <input type="email" name="email" />
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 comment-form-comment">
+                        <p>Tu comentario</p>
+                        <textarea id="message-box" cols="30" rows="10" name="coment"></textarea>
+                        <input type="submit" value="Comentar" />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- single-blog end -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Blog Page -->
+
+</main><!-- End #main -->
+{% endblock %}

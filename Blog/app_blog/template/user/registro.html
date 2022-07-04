@@ -1,0 +1,125 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block contenido %}
+<div class="header-bg page-area">
+    <div class="container position-relative">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="slider-content text-center">
+                    <div class="header-bottom">
+                        <div class="layer2">
+                            <h1 class="title2">Acceso Usuario</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Blog Header -->
+<main class="login-form bg-light">
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <div class="card text-white bg-light mb-3 ">
+                    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link " id="tab-login" data-mdb-toggle="pill" href="{% url 'login' %}"
+                                role="tab" aria-controls="pills-login" aria-selected="true">Inicio Sesión</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="tab-register" data-mdb-toggle="pill" href="{% url 'register' %}"
+                                role="tab" aria-controls="pills-register" aria-selected="false">Registro</a>
+                        </li>
+                    </ul>
+                    <!-- Pills navs -->
+                    <!-- Pills content -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
+                            aria-labelledby="tab-login">
+                            <div class="col-lg-12 d-flex justify-content-center">
+                                <form method="POST" action="">
+                                    {% csrf_token %}
+                                    <div class="form-group col-lg-12">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <span class="input-group-text fw-bold"
+                                                id="inputGroup-sizing-sm">Nombre </span>
+                                            <input type="text" class="form-control text"
+                                                aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm" name="last_name" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-lg-12">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <span class="input-group-text fw-bold"
+                                                id="inputGroup-sizing-sm">Apellido </span>
+                                            <input type="text" class="form-control text"
+                                                aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm" name="first_name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <span class="input-group-text fw-bold"
+                                                id="inputGroup-sizing-sm">Email </span>
+                                            <input type="email" class="form-control text"
+                                                aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm" name="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <span class="input-group-text fw-bold"
+                                                id="inputGroup-sizing-sm">Usuario </span>
+                                            <input type="text" class="form-control text"
+                                                aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm" name="username" required>
+                                        </div>
+                                    </div>
+                                    <!-- Password input -->
+                                    <div class="form-group col-lg-12">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <span class="input-group-text fw-bold"
+                                                id="inputGroup-sizing-sm">Contraseña </span>
+                                            <input type="password" class="form-control text"
+                                                aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm" name="password1" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <span class="input-group-text fw-bold"
+                                                id="inputGroup-sizing-sm">Repetir contraseña </span>
+                                            <input type="password" class="form-control text"
+                                                aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm" name="password2" required>
+                                        </div>
+                                    </div>
+                                    {% if password1 != password2 %}
+                                    <script>
+                                        Swal.fire({
+                                          "title":"cuidado",
+                                          "text":"no coinciden",
+                                          "icon":"error"
+                                        })
+                                    </script>
+                                    {% endif %}
+                                        <!-- 2 column grid layout -->
+                                    <div class="row mb-4">
+                                        <div class="col-lg-12 d-flex justify-content-center">
+                                            <!-- Simple link -->
+                                            <button type="submit" class="btn btn-danger btn-block mb-3">Registrar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Pills content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+</main>
+{% endblock %}
